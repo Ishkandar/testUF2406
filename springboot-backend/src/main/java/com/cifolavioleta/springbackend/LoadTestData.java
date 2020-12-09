@@ -19,8 +19,14 @@ public class LoadTestData {
     @Bean
     CommandLineRunner initDatabase(BookRepository bookRepository, QuoteRepository quoteRepository) {
         return args -> {
+        	log.info("Cleaning previous book data");
+        	bookRepository.deleteAll();
+        	
             log.info("Preloading book " + bookRepository.save(new Book(null, "Anna Karenina")));
             log.info("Preloading book " + bookRepository.save(new Book(null, "Orlando")));
+            
+        	log.info("Cleaning previous quote data");
+        	quoteRepository.deleteAll();
            
             log.info("Preloading quote " + quoteRepository.save(new Quote(null, "Happy families", "“All happy families are alike; each unhappy family is unhappy in its own way.", 14)));
             log.info("Preloading quote " + quoteRepository.save(new Quote(null, "Perfection", "If you look for perfection, you'll never be content.", 10)));

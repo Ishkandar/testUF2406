@@ -1,11 +1,14 @@
 package com.cifolavioleta.springbackend.model;
 
+import java.util.ArrayList;
+
 // import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 // import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,8 +20,8 @@ public class Book {
 	private Long id;
 	private String title;
 	//private String publisher;
-	/*@OneToMany(mappedBy = "book")
-	private ArrayList<Quote> quotes;*/
+	//@OneToMany(mappedBy = "book")
+	//private ArrayList<Quote> quotes;
 	
 	public Book() {
 		super();
@@ -81,6 +84,6 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return String.format("Book: [id = %d, name = '%s', publisher = '%s']", id, title);
+		return String.format("Book: [id = " + id + ", name = " + title + "]");
 	}
 }

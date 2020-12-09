@@ -57,17 +57,6 @@ public class QuoteService implements QuoteRepository{
 		return quotesResponse;
 	}
 	
-	public void insertTestQuotes() {
-		quoteRepository.save(new Quote(null, "Happy families", "“All happy families are alike; each unhappy family is unhappy in its own way.", 14));
-		quoteRepository.save(new Quote(null, "Perfection", "If you look for perfection, you'll never be content.", 10));
-		quoteRepository.save(new Quote(null, "Hearts", "I think... if it is true that there are as many minds as there are heads, then there are as many kinds of love as there are hearts.", 28));
-		quoteRepository.save(new Quote(null, "The sun", "He stepped down, trying not to look long at her, as if she were the sun, yet he saw her, like the sun, even without looking.", 26));
-		quoteRepository.save(new Quote(null, "Respect", "Respect was invented to cover the empty place where love should be.", 12));
-		quoteRepository.save(new Quote(null, "Woman thinking", "As long as she thinks of a man, nobody objects to a woman thinking.", 14));
-		quoteRepository.save(new Quote(null, "Melancholy", "Nothing thicker than a knife's blade separates happiness from melancholy.", 11));
-		quoteRepository.save(new Quote(null, "Woman existence", "Love, the poet said, is woman's whole existence.", 9));
-	}
-	
 	@Override
 	public <S extends Quote> S saveAndFlush(S entity) {
 		// TODO Auto-generated method stub

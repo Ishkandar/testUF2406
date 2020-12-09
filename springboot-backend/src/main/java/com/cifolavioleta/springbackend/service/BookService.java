@@ -31,11 +31,6 @@ public class BookService implements BookRepository{
 	public List<Book> findAll(Sort sort) {
 		return bookRepository.findAll(sort);
 	}
-	
-	public void insertTestBooks() {
-		bookRepository.save(new Book(null, "Anna Karenina"));
-		bookRepository.save(new Book(null, "Orlando"));
-	}
 
 	@Override
 	public List<Book> findAllById(Iterable<Long> ids) {

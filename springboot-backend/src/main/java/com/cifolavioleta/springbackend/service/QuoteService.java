@@ -18,6 +18,11 @@ import com.cifolavioleta.springbackend.repository.QuoteRepository;
 public class QuoteService implements QuoteRepository{
 	@Autowired
 	private QuoteRepository quoteRepository;
+	
+	@Override
+	public Optional<Quote> findById(Long id) {
+		return quoteRepository.findById(id);
+	}
 
 	@Override
 	public List<Quote> findAll() {
@@ -30,23 +35,39 @@ public class QuoteService implements QuoteRepository{
 	}
 
 	@Override
-	public List<Quote> findAllById(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		return null;
+	public long count() {
+		return quoteRepository.count();
 	}
 
 	@Override
-	public <S extends Quote> List<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteById(Long id) {
+		quoteRepository.deleteById(id);
 	}
-
-	@Override
-	public void flush() {
-		// TODO Auto-generated method stub
+	
+	public List<Quote> findAllByBook(Long book_id) {
+		List<Quote> quotesResponse = new ArrayList<>();
+		List<Quote> quotes = quoteRepository.findAll();
 		
+		for (Quote quote : quotes) {
+			if (quote.getBook().getId() == book_id) {
+				quotesResponse.add(quote);
+			}
+		}
+		
+		return quotesResponse;
 	}
-
+	
+	public void insertTestQuotes() {
+		quoteRepository.save(new Quote(null, "Happy families", "“All happy families are alike; each unhappy family is unhappy in its own way.", 14));
+		quoteRepository.save(new Quote(null, "Perfection", "If you look for perfection, you'll never be content.", 10));
+		quoteRepository.save(new Quote(null, "Hearts", "I think... if it is true that there are as many minds as there are heads, then there are as many kinds of love as there are hearts.", 28));
+		quoteRepository.save(new Quote(null, "The sun", "He stepped down, trying not to look long at her, as if she were the sun, yet he saw her, like the sun, even without looking.", 26));
+		quoteRepository.save(new Quote(null, "Respect", "Respect was invented to cover the empty place where love should be.", 12));
+		quoteRepository.save(new Quote(null, "Woman thinking", "As long as she thinks of a man, nobody objects to a woman thinking.", 14));
+		quoteRepository.save(new Quote(null, "Melancholy", "Nothing thicker than a knife's blade separates happiness from melancholy.", 11));
+		quoteRepository.save(new Quote(null, "Woman existence", "Love, the poet said, is woman's whole existence.", 9));
+	}
+	
 	@Override
 	public <S extends Quote> S saveAndFlush(S entity) {
 		// TODO Auto-generated method stub
@@ -95,10 +116,6 @@ public class QuoteService implements QuoteRepository{
 		return null;
 	}
 
-	@Override
-	public Optional<Quote> findById(Long id) {
-		return quoteRepository.findById(id);
-	}
 
 	@Override
 	public boolean existsById(Long id) {
@@ -106,17 +123,6 @@ public class QuoteService implements QuoteRepository{
 		return false;
 	}
 
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void deleteById(Long id) {
-		quoteRepository.deleteById(id);
-		
-	}
 
 	@Override
 	public void delete(Quote entity) {
@@ -160,17 +166,22 @@ public class QuoteService implements QuoteRepository{
 		return false;
 	}
 
-	public List<Quote> findAllByBook(Long book_id) {
-		List<Quote> quotesResponse = new ArrayList<>();
-		List<Quote> quotes = quoteRepository.findAll();
+	@Override
+	public List<Quote> findAllById(Iterable<Long> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <S extends Quote> List<S> saveAll(Iterable<S> entities) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void flush() {
+		// TODO Auto-generated method stub
 		
-		for (Quote quote : quotes) {
-			if (quote.getBook().getId() == book_id) {
-				quotesResponse.add(quote);
-			}
-		}
-		
-		return quotesResponse;
 	}
 
 }

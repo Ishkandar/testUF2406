@@ -1,12 +1,12 @@
 package com.cifolavioleta.springbackend.model;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+// import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,19 +16,19 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private String publisher;
-	@OneToMany(mappedBy = "book")
-	private ArrayList<Quote> quotes;
+	//private String publisher;
+	/*@OneToMany(mappedBy = "book")
+	private ArrayList<Quote> quotes;*/
 	
 	public Book() {
 		super();
 	}
 	
-	public Book(Long id, String title, String publisher) {
+	public Book(Long id, String title) {
 		super();
 		this.title = title;
-		this.publisher = publisher;
-		quotes = new ArrayList<Quote>();
+		//this.publisher = publisher;
+		//quotes = new ArrayList<>();
 	}
 	
 	public Long getId() {
@@ -47,13 +47,13 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getPublisher() {
+	/*public String getPublisher() {
 		return publisher;
 	}
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
-	}
+	}*/
 
 	@Override
 	public boolean equals(Object obj) {
@@ -64,8 +64,7 @@ public class Book {
 		Book bookObject = (Book) obj;
 		
 		if (this.id == bookObject.id && 
-				this.title.equals(bookObject.title) &&
-				this.publisher.equals(bookObject.publisher)) {
+				this.title.equals(bookObject.title)) {
 			return true;
 		}
 		
@@ -82,6 +81,6 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return String.format("Book: [id = %d, name = '%s', publisher = '%s']", id, title, publisher);
+		return String.format("Book: [id = %d, name = '%s', publisher = '%s']", id, title);
 	}
 }

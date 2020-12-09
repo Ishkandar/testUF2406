@@ -17,6 +17,10 @@ import com.cifolavioleta.springbackend.repository.BookRepository;
 public class BookService implements BookRepository{
 	@Autowired
 	private BookRepository bookRepository;
+	
+	public void addBook(Book book) {
+		bookRepository.save(book);
+	}
 
 	@Override
 	public List<Book> findAll() {
@@ -26,6 +30,11 @@ public class BookService implements BookRepository{
 	@Override
 	public List<Book> findAll(Sort sort) {
 		return bookRepository.findAll(sort);
+	}
+	
+	public void insertTestBooks() {
+		bookRepository.save(new Book(null, "Anna Karenina"));
+		bookRepository.save(new Book(null, "Orlando"));
 	}
 
 	@Override

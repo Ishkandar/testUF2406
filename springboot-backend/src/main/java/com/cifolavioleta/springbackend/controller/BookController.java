@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.ResponseEntity;
 
@@ -18,7 +19,12 @@ public class BookController {
 	private BookService bookService;
 	
 	@GetMapping
-	private ResponseEntity<List<Book>> getAllBooks() {
+	public ResponseEntity<List<Book>> getAllBooks() {
 		return ResponseEntity.ok(bookService.findAll());
 	}	
+	
+	@PostMapping("/insertTestBooks/")
+	public void insertTestBooks() {
+		bookService.insertTestBooks();
+	}
 }

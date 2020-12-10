@@ -22,8 +22,8 @@ public class LoadTestData {
         	log.info("Cleaning previous book data");
         	bookRepository.deleteAll();
         	
-            log.info("Preloading book " + bookRepository.save(new Book(null, "Anna Karenina")));
-            log.info("Preloading book " + bookRepository.save(new Book(null, "Orlando")));
+            log.info("Preloading book " + bookRepository.save(new Book(null, "Anna Karenina", "Penguin Random House")));
+            log.info("Preloading book " + bookRepository.save(new Book(null, "Orlando", "Penguin Random House")));
             
         	log.info("Cleaning previous quote data");
         	quoteRepository.deleteAll();
